@@ -7,5 +7,23 @@ save(packages, file="Rpackages")
 
 # new computer
 load("Rpackages")
-for (p in setdiff(packages, installed.packages()[,"Package"]))
-install.packages(p)
+for (p in setdiff(packages, installed.packages()[,"Package"])) install.packages(p)
+
+
+#install keras
+
+install.packages("devtools)
+devtools::install_github("rstudio/keras")
+library(keras)
+install_keras()
+
+# if not working
+
+library(reticulate)
+conda_remove("r-tensorflow")
+library(keras)
+install_keras()
+
+library(keras)
+use_condaenv("r-tensorflow")
+dataset_mnist()
